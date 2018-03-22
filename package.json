@@ -15,17 +15,10 @@
   "bugs": {
     "url": "https://github.com/knockerclot0715/Air_Pollution_Monitoring/issues"
   },
-  "homepage": "https://github.com/knockerclot0715/Air_Pollution_Monitoring#readme"
-}
-{
-  "name": "serialport",
-  "version": "6.1.1"
-}
-{
-  "name": "mysql",
-  "version": "2.15.0"
-}
-{
-  "name": "moment",
-  "version": "2.21.0"
+  "homepage": "https://github.com/knockerclot0715/Air_Pollution_Monitoring#readme",
+  "dependencies": {
+    "moment": "^2.21.0",
+    "mysql": "^2.15.0",
+    "serialport": "^6.1.1"
+  }
 }

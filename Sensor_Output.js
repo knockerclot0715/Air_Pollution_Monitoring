@@ -1,5 +1,7 @@
 "use strict";
 
+console.log("Hi");
+
 const SerialPortModule = require("serialport");
 const Moment = require("moment");
 const MySQL = require("mysql");

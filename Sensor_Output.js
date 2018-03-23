@@ -5,7 +5,7 @@ const DateTimeModule = require('date-and-time');
 const MySQLModule = require('mysql');
 
 const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
-const Database_Connection = MySQLModule.createConnection({host: '10.0.0.254', user: 'Station', password: 'Marc0715', database: 'Air_Pollution_Project'});
+const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
 
 Database_Connection.connect();
 

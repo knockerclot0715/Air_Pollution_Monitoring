@@ -2,7 +2,6 @@
 
 
 const SerialPortModule = require("serialport");
-const MySQLModule = require("mysql");
 const DateTimeModule = require('date-and-time');
 
 const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});

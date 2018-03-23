@@ -1,6 +1,5 @@
 "use strict";
 
-
 const SerialPortModule = require("serialport");
 const DateTimeModule = require('date-and-time');
 
@@ -15,7 +14,7 @@ SerialPort.on('data', function(Data) {
   var Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
 
   //Settings for current time
-  let Time = new Date();
+  var Time = new Date();
   var Current_Time = DateTimeModule.format(Time, 'YYYY/MM/DD HH:mm:ss');
 
   //output pm2.5 reading and the current time

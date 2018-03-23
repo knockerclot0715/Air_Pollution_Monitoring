@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/knockerclot0715/Air_Pollution_Monitoring/issues"
   },
-  "homepage": "https://github.com/knockerclot0715/Air_Pollution_Monitoring#readme"
+  "homepage": "https://github.com/knockerclot0715/Air_Pollution_Monitoring#readme",
+  "dependencies": {}
 }

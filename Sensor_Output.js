@@ -8,15 +8,17 @@ const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
 const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
 const Station_ID = 1;
 
-var Data = "";
-
 function DataRetrieve() {
   console.log("Inside DataRetrieve Function");
   SerialPort.on('data', function(Data) {
+
+    //Settings for serial data conversion and extraction
     var Data = Data.toString('hex').match(/.{1,2}/g);
-    console.log("Data:", Data);
-  });
-  return Data;
+    var LowBitRate = parseInt(Data[2], 16);
+    var HighBitRate = parseInt(Data[3], 16);
+    var Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
+    return Air_Pollution_Reading;
+  };
 };
 
 while (true) {

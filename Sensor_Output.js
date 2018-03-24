@@ -12,8 +12,8 @@ function DataRetrieve() {
   var Data = "";
   console.log("Inside DataRetrieve Function");
   SerialPort.on('data', function(Data) {
-    console.log("Data:", Data);
     Data = Data.toString('hex').match(/.{1,2}/g);
+    console.log("Data:", Data);
   });
   return Data;
 };

@@ -7,6 +7,12 @@ const MySQLModule = require('mysql');
 const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
 const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
 
+function RetrieveData() {
+  var Data = SerialPort.on('data');
+  console.log(Data);
+};
+
+/*
 Database_Connection.connect();
 
 SerialPort.on('data', function(Data) {
@@ -28,3 +34,4 @@ SerialPort.on('data', function(Data) {
   Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Air_Pollution_Reading_Value) VALUES ('+Station_ID+', '+Air_Pollution_Reading+')');
   console.log("--------------------");
 });
+*/

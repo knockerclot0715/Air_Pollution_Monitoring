@@ -8,11 +8,12 @@ const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
 const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
 const Station_ID = 1;
 
+var Data = "";
+
 function DataRetrieve() {
-  var Data = "";
   console.log("Inside DataRetrieve Function");
   SerialPort.on('data', function(Data) {
-    Data = Data.toString('hex').match(/.{1,2}/g);
+    var Data = Data.toString('hex').match(/.{1,2}/g);
     console.log("Data:", Data);
   });
   return Data;

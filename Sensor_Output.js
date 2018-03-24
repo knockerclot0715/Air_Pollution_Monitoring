@@ -10,7 +10,10 @@ const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', use
 function RetrieveData() {
   var Data = SerialPort.on('data');
   console.log(Data);
+  return Data;
 };
+
+RetrieveData();
 
 /*
 Database_Connection.connect();

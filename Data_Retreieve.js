@@ -1,4 +1,4 @@
-/*
+
 var QueryResults = [];
 
 const MySQLModule = require('mysql');
@@ -21,16 +21,13 @@ Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution
     console.log("An error has occured", error.stack);
   } else {
     console.log("Raw data from the past 10 seconds");
-    object.keys(result).forEach(function(key) {
-      var row = result[key];
-      console.log(row.Air_Pollution_Reading_Value);
-    });
+    cosole.log(result);
   }
 });
-*/
 
 
 
+/*
 
 // Node.js MySQL SELECT FROM query Example
 // include mysql module
@@ -43,6 +40,7 @@ var con = mysql.createConnection({
   password: "Marc0715",    // corresponding password
   database: "Air_Pollution_Project" // use the specified database
 });
+
 
 // make to connection to the database.
 con.connect(function(err) {
@@ -59,3 +57,4 @@ con.connect(function(err) {
     });
   });
 });
+*/

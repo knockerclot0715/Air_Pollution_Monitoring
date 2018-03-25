@@ -15,7 +15,7 @@ SerialPort.on('data', function(Data) {
   //Settings for serial data conversion and extraction
   console.log(Data);
   console.log(Data.toString('hex'));
-  console.log(Data.toString('hex').match(/.{1,2}/g););
+  console.log(Data.toString('hex').match(/.{1,2}/g));
   var Data = Data.toString('hex').match(/.{1,2}/g);
   var LowBitRate = parseInt(Data[2], 16);
   var HighBitRate = parseInt(Data[3], 16);

@@ -8,7 +8,7 @@ var Time = new Date();
 var Current_Time = "2018-03-25 05:00:30";
 console.log("Current Time:", Current_Time);
 //var Previous_Time = DateTimeModule.addSeconds(Time, -10, 'YYYY-MM-DD HH:mm:ss');
-var Current_Time = "2018-03-25 05:00:20";
+var Previous_Time = "2018-03-25 05:00:20";
 console.log("Previous Time:", Previous_Time);
 
 Database_Connection.connect();

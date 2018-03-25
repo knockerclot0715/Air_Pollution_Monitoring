@@ -6,7 +6,7 @@ const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', use
 var Time = new Date();
 var Current_Time = DateTimeModule.format(Time, 'YYYY/MM/DD HH:mm:ss');
 console.log("Current Time:", Current_Time);
-var Previous_Time = DateTimeModule.addSeconds(now, -10);
+var Previous_Time = DateTimeModule.add(Time, -10, 'YYYY/MM/DD HH:mm:ss');
 console.log("Previous Time:", Previous_Time);
 
 Database_Connection.connect();

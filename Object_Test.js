@@ -1,3 +1,3 @@
 var foo = { 'alpha' : 'puffin', 'beta' : 'beagle' };
-var keys = Object.keys(foo);
+var keys = Object.values(foo);
 console.log(keys);

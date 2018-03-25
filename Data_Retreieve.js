@@ -1,3 +1,4 @@
+/*
 var QueryResults = [];
 
 const MySQLModule = require('mysql');
@@ -25,4 +26,36 @@ Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution
       console.log(row.Air_Pollution_Reading_Value);
     });
   }
+});
+*/
+
+
+
+
+// Node.js MySQL SELECT FROM query Example
+// include mysql module
+var mysql = require('mysql');
+
+// create a connection variable with the required details
+var con = mysql.createConnection({
+  host: "10.0.0.11",    // ip address of server running mysql
+  user: "Station_1",    // user name to your mysql database
+  password: "Marc0715",    // corresponding password
+  database: "Air_Pollution_Project" // use the specified database
+});
+
+// make to connection to the database.
+con.connect(function(err) {
+  if (err) throw err;
+  // if connection is successful
+  con.query("SELECT Air_Pollution_Reading_Value FROM Air_Pollution_Reading_Record", function (err, result, fields) {
+    // if any error while executing above query, throw error
+    if (err) throw err;
+    // if there is no error, you have the result
+    // iterate for all the rows in result
+    Object.keys(result).forEach(function(key) {
+      var row = result[key];
+      console.log(row.Air_Pollution_Reading_Record);
+    });
+  });
 });

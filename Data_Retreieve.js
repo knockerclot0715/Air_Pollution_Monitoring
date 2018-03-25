@@ -1,3 +1,5 @@
+var QueryResults = [];
+
 const MySQLModule = require('mysql');
 const DateTimeModule = require('date-and-time');
 
@@ -18,5 +20,11 @@ Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution
   } else {
     console.log("Raw Data From The Past 10 Seconds:");
     console.log(results);
+    function(results);
   }
 });
+
+function SaveResult(Result) {
+  Result = QueryResults;
+  console.log(QueryResults)
+}

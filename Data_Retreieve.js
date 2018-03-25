@@ -20,9 +20,8 @@ Database_Connection.query('SELECT AVG(Air_Pollution_Reading_Value) FROM Air_Poll
     console.log("An errror has occured", error.stack);
   } else {
     console.log("Raw Data From The Past 10 Seconds:");
-    if (result > 100) {
-      console.log("Bigger than 100");
-    }
+    Reading = result[0].Air_Pollution_Reading_Value
+    console.log(Reading);
   };
 });
 

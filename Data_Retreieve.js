@@ -20,11 +20,11 @@ Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution
   } else {
     console.log("Raw Data From The Past 10 Seconds:");
     console.log(results);
-    function SaveResult(results);
+    function SaveResult(results)
   }
 });
 
 function SaveResult(Result) {
-  Result = QueryResults;
+  QueryResults.push(Result);
   console.log(QueryResults)
 }

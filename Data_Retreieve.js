@@ -21,7 +21,10 @@ Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution
     console.log("An error has occured", error.stack);
   } else {
     console.log("Raw data from the past 10 seconds");
-    console.log(result);
+    var Queried_Results = result;
+    console.log(Queried_Results);
+    var Results = Object.keys(Queried_Results);
+    console.log(Results);
   }
 });
 

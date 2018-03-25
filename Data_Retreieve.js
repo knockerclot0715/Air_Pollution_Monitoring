@@ -17,17 +17,12 @@ Database_Connection.connect();
 
 Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution_Reading_Record WHERE Time_Of_Record > '+Previous_Time+' AND Time_Of_Record <= '+Current_Time+'', function(error, result) {
   if (error) {
-    console.log("An errror has occured", error.stack);
+    console.log("An error has occured", error.stack);
   } else {
-    console.log("Raw Data From The Past 10 Seconds:");
-    console.log(result.toString());
-    console.log(result);
-    Object.keys(result).forEach(function(key) {
+    console.log("Raw data from the past 10 seconds");
+    object.keys(result).forEach(function(key) {
       var row = result[key];
-      console.log(row.Air_Pollution_Reading_Value)
-  };
+      console.log(row.Air_Pollution_Reading_Value);
+    });
+  }
 });
-
-function SaveResult(Result) {
-  QueryResults.push(Result);
-}

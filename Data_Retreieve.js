@@ -5,7 +5,9 @@ const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', use
 
 var Time = new Date();
 var Current_Time = DateTimeModule.format(Time, 'YYYY/MM/DD HH:mm:ss');
+console.log("Current Time:", Current_Time);
 var Previous_Time = DateTimeModule.addSeconds(Time, -10);
+console.log("Previous Time:", Previous_Time);
 
 Database_Connection.connect();
 Database_Connection.query('SELECT * FROM Air_Pollution_Project.Air_Pollution_Reading_Record WHERE Time_Of_Record > '+Previous_Time+' AND Time_Of_Record <= '+Current_Time+'', function(error, results) {

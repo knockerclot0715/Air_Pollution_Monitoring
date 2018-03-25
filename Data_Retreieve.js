@@ -22,13 +22,9 @@ Database_Connection.query('SELECT Air_Pollution_Reading_Value FROM Air_Pollution
   } else {
     console.log("Raw data from the past 10 seconds");
     var Queried_Results = result;
-    console.log(Queried_Results);
-    var ResultsK = Object.keys(Queried_Results);
-    console.log(ResultsK);
-    var ResultsV = Object.values(Queried_Results);
-    console.log(ResultsV);
-    var ResultsE = Object.entries(Queried_Results);
-    console.log(ResultsE);
+    Object.values(Queried_Results).forEach(function(values) {
+      var row = Queried_Results[values];
+      console.log(row.Air_Pollution_Reading_Value);
   }
 });
 

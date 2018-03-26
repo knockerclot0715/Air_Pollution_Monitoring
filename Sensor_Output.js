@@ -13,7 +13,6 @@ SerialPort.on('data', function(Data) {
   const Station_ID = 1;
 
   //Settings for serial data conversion and extraction
-  console.log(Data);
   var Data = Data.toString('hex').match(/.{1,2}/g);
   var LowBitRate = parseInt(Data[2], 16);
   var HighBitRate = parseInt(Data[3], 16);

@@ -29,6 +29,6 @@ SerialPort.on('data', function(Data) {
 function Data_Insert(Station_ID_Source, Air_Pollution_Reading_Source) {
   const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
   Database_Connection.connect();
-  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Air_Pollution_Reading) VALUES ('+Station_ID_Source+', '+Air_Pollution_Reading_Source+')');
+  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Air_Pollution_Reading_Value) VALUES ('+Station_ID_Source+', '+Air_Pollution_Reading_Source+')');
   Database_Connection.end();
 }

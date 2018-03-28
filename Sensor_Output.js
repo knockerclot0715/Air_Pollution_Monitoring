@@ -22,7 +22,7 @@ SerialPort.on('data', function(Data) {
   //output pm2.5 reading and the current time
   console.log("Current Time:", Current_Time);
   console.log("Air Pollution Reading:", Air_Pollution_Reading);
-  Data_Insert(Station_ID, Current_Time, Air_Pollution_Reading);
+  Data_Insert(Station_ID, Air_Pollution_Reading);
   console.log("--------------------");
 });
 

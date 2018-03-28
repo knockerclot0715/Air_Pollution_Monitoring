@@ -5,9 +5,6 @@ const DateTimeModule = require('date-and-time');
 const MySQLModule = require('mysql');
 
 const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
-const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
-
-Database_Connection.connect();
 
 SerialPort.on('data', function(Data) {
   const Station_ID = 1;
@@ -25,6 +22,13 @@ SerialPort.on('data', function(Data) {
   //output pm2.5 reading and the current time
   console.log("Current Time:", Current_Time);
   console.log("Air Pollution Reading:", Air_Pollution_Reading);
-  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Air_Pollution_Reading_Value) VALUES ('+Station_ID+', '+Air_Pollution_Reading+')');
+  Data_Insert(Station_ID, Current_Time, Air_Pollution_Reading);
   console.log("--------------------");
 });
+
+function Data_Insert(Station_ID_Source, Air_Pollution_Reading_Source) {
+  const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Reading_Record'});
+  Database_Connection.connect();
+  Database_Connection.query('INSERT IGNORE INTO Test_Table (Station_ID, Air_Pollution_Reading) VALUES ('+Station_ID_Source+', '+Air_Pollution_Reading_Source+')');
+  Database_Connection.end();
+}

@@ -12,5 +12,6 @@ npm install serialport
 echo "-----Installing 'date-and-time' module-----"
 npm install date-and-time
 clear
+sudo apt-get screen
 screen
 node Sensor_Output.js

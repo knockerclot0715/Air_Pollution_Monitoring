@@ -22,13 +22,13 @@ SerialPort.on('data', function(Data) {
   //output pm2.5 reading and the current time
   console.log("Current Time:", Current_Time);
   console.log("Air Pollution Reading:", Air_Pollution_Reading);
-  Data_Insert(Station_ID, Air_Pollution_Reading);
+  Data_Insert(Station_ID,Current_Time, Air_Pollution_Reading);
   console.log("--------------------");
 });
 
-function Data_Insert(Station_ID_Source, Air_Pollution_Reading_Source) {
+function Data_Insert(Station_ID_Source,Current_Time_Source, Air_Pollution_Reading_Source) {
   const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
   Database_Connection.connect();
-  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Air_Pollution_Reading_Value) VALUES ('+Station_ID_Source+', '+Air_Pollution_Reading_Source+')');
+  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Air_Pollution_Reading_Value, Time_Of_Record) VALUES ('+Station_ID_Source+', '+Air_Pollution_Reading_Source+', '+Current_Time_Source+')');
   Database_Connection.end();
 }

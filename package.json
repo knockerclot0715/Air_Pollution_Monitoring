@@ -20,6 +20,7 @@
   "dependencies": {
     "date-and-time": "^0.6.2",
     "mysql": "^2.15.0",
+    "random-number": "0.0.9",
     "serialport": "^6.1.1"
   }
 }

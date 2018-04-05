@@ -10,10 +10,10 @@ const options = {
   max: 999
 }
 
-var Air_Pollution_Reading = RandomNumberModule(options);
-
 var Time = new Date();
 var Current_Time = DateTimeModule.format(Time, 'YYYY/MM/DD HH:mm:ss');
+
+var Air_Pollution_Reading = RandomNumberModule(options);
 
 console.log("Current Time:", Current_Time);
 console.log("Air Pollution Reading:", Air_Pollution_Reading);

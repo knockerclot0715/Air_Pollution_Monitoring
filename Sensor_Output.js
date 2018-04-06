@@ -13,24 +13,24 @@ SerialPort.on('data', function(Data) {
   var Data = Data.toString('hex').match(/.{1,2}/g);
   var LowBitRate = parseInt(Data[2], 16);
   var HighBitRate = parseInt(Data[3], 16);
-  var Small_Air_Pollution_Reading_Source = (HighBitRate * 256 + LowBitRate) / 10;
+  var Small_Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
 
   var LowBitRate = parseInt(Data[4], 16);
   var HighBitRate = parseInt(Data[5], 16);
-  var Big_Air_Pollution_Reading_Source = (HighBitRate * 256 + LowBitRate) / 10;
+  var Big_Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
 
   //Settings for current time
   var Current_Time = MomentModule().format('YYYY-MM-DD H:m:s');
 
   //output pm2.5 reading and the current time
   console.log("Current Time:", Current_Time);
-  console.log("PM2.5 Pollution Reading:", Small_Air_Pollution_Reading_Source);
-  console.log("PM10 Pollution Reading:", Small_Air_Pollution_Reading_Source);
-  Data_Insert(Station_ID, Current_Time, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source);
+  console.log("PM2.5 Pollution Reading:", Small_Air_Pollution_Reading);
+  console.log("PM10 Pollution Reading:", Big_Air_Pollution_Reading);
+  Data_Insert(Station_ID, Current_Time, Small_Air_Pollution_Reading, Big_Air_Pollution_Reading);
   console.log("--------------------");
 });
 
-function Data_Insert(Station_ID, Current_Time, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source) {
+function Data_Insert(Station_ID, Current_Time_Source, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source) {
   Current_Time_Source = "'"+ Current_Time_Source +"'";
   const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
   Database_Connection.connect(function(error) {

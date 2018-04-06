@@ -30,7 +30,7 @@ SerialPort.on('data', function(Data) {
   console.log("--------------------");
 });
 
-function Data_Insert(Station_ID, Current_Time_Source, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source) {
+function Data_Insert(Station_ID_Source, Current_Time_Source, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source) {
   Current_Time_Source = "'"+ Current_Time_Source +"'";
   const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
   Database_Connection.connect(function(error) {

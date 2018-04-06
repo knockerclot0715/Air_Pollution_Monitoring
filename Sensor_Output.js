@@ -40,6 +40,6 @@ function Data_Insert(Station_ID_Source, Current_Time_Source, Small_Air_Pollution
       return;
     }
   });
-  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, PM2.5_Pollution_Reading, PM10_Pollution_Reading) VALUES ('+Station_ID_Source+', '+Small_Air_Pollution_Reading_Source+', '+Big_Air_Pollution_Reading_Source+', '+Current_Time_Source+')');
+  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, PM2.5_Pollution_Reading, PM10_Pollution_Reading, Time_Of_Record) VALUES ('+Station_ID_Source+', '+Small_Air_Pollution_Reading_Source+', '+Big_Air_Pollution_Reading_Source+', '+Current_Time_Source+')');
   Database_Connection.end();
 }

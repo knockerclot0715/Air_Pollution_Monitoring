@@ -24,7 +24,8 @@ SerialPort.on('data', function(Data) {
 
   //output pm2.5 reading and the current time
   console.log("Current Time:", Current_Time);
-  console.log("Air Pollution Reading:", Air_Pollution_Reading);
+  console.log("PM2.5 Pollution Reading:", Small_Air_Pollution_Reading_Source);
+  console.log("PM10 Pollution Reading:", Small_Air_Pollution_Reading_Source);
   Data_Insert(Station_ID, Current_Time, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source);
   console.log("--------------------");
 });

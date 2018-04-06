@@ -1,7 +1,7 @@
 "use strict";
 
 const SerialPortModule = require("serialport");
-const DateTimeModule = require('date-and-time');
+const MomentModule = require('moment');
 const MySQLModule = require('mysql');
 
 const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
@@ -16,8 +16,7 @@ SerialPort.on('data', function(Data) {
   var Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
 
   //Settings for current time
-  var Time = new Date();
-  var Current_Time = DateTimeModule.format(Time, 'YYYY/MM/DD HH:mm:ss');
+  var Current_Time = MomentModule().format('YYYY-MM-DD H:m:s');
 
   //output pm2.5 reading and the current time
   console.log("Current Time:", Current_Time);

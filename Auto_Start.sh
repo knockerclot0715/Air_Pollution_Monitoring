@@ -10,5 +10,7 @@ echo "-----Installing 'date-and-time' module-----"
 npm install date-and-time
 echo "-----Installing 'random-number' module-----"
 npm install random-number
+echo "-----Installing 'moment' module-----"
+npm install moment
 echo "-----Starting up the server-----"
 node Sensor_Output.js

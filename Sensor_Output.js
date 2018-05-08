@@ -1,45 +1,35 @@
 "use strict";
 
 const SerialPortModule = require("serialport");
-const MomentModule = require('moment');
 const MySQLModule = require('mysql');
+const MomentModule = require('moment');
+const PiInfo = require('piinfo');
 
 const SerialPort = new SerialPortModule("/dev/ttyUSB0", {baudRate: 9600});
+const Station_Serial_ID = '\"' + PiInfo.serial() + '\"';
 
 SerialPort.on('data', function(Data) {
-  const Station_ID = 1;
-
-  //Settings for serial data conversion and extraction
   var Data = Data.toString('hex').match(/.{1,2}/g);
   var LowBitRate = parseInt(Data[2], 16);
   var HighBitRate = parseInt(Data[3], 16);
-  var Small_Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
+  var Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
 
-  var LowBitRate = parseInt(Data[4], 16);
-  var HighBitRate = parseInt(Data[5], 16);
-  var Big_Air_Pollution_Reading = (HighBitRate * 256 + LowBitRate) / 10;
-
-  //Settings for current time
-  var Current_Time = MomentModule().format('YYYY-MM-DD H:m:s');
-
-  //output pm2.5 reading and the current time
-  console.log("Current Time:", Current_Time);
-  console.log("PM2.5 Pollution Reading:", Small_Air_Pollution_Reading);
-  console.log("PM10 Pollution Reading:", Big_Air_Pollution_Reading);
-  Data_Insert(Station_ID, Current_Time, Small_Air_Pollution_Reading, Big_Air_Pollution_Reading);
+  console.log("Current Time: " + MomentModule().format('YYYY-MM-DD HH:mm:ss'));
+  console.log("Station's Serial ID: " + Station_Serial_ID);
+  console.log("Air Pollution Reading: " + Air_Pollution_Reading);
+  Data_Insert(Station_Serial_ID, Air_Pollution_Reading);
   console.log("--------------------");
 });
 
-function Data_Insert(Station_ID_Source, Current_Time_Source, Small_Air_Pollution_Reading_Source, Big_Air_Pollution_Reading_Source) {
-  Current_Time_Source = "'"+ Current_Time_Source +"'";
+function Data_Insert(Station_Serial_Source, Air_Pollution_Reading) {
   const Database_Connection = MySQLModule.createConnection({host: '10.0.0.11', user: 'Station_1', password: 'Marc0715', database: 'Air_Pollution_Project'});
   Database_Connection.connect(function(error) {
     if (error) {
       console.log("Failed to connect to the database");
-      console.log(error);
+      console.log(error.red);
       return;
     }
   });
-  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_ID, Small_Pollution_Reading, Big_Pollution_Reading, Time_Of_Record) VALUES ('+Station_ID_Source+', '+Small_Air_Pollution_Reading_Source+', '+Big_Air_Pollution_Reading_Source+', '+Current_Time_Source+')');
+  Database_Connection.query('INSERT IGNORE INTO Air_Pollution_Reading_Record (Station_Serial_ID, Air_Pollution_Reading) VALUES ('+Station_Serial_Source+', '+Air_Pollution_Reading+')');
   Database_Connection.end();
 }

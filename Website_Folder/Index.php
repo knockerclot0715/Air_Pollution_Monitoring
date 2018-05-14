@@ -15,6 +15,7 @@
     </script>
   </head>
   <body>
+    <a href="Plotting_Graph.php">Press here to go to history chartas</a>
     <div id="Refresh">
       <?php
       $Database_Connection = mysqli_connect("10.0.0.2", "Station_Test", "Station_Test", "Air_Pollution_Project", 3307);
